@@ -13,3 +13,6 @@ jobs:
         with:
           java-version: 17
       - run: ./gradlew build
+      - name: Publish Test Report
+        if: ${{ always() }}
+        uses: scacap/action-surefire-report@v1
