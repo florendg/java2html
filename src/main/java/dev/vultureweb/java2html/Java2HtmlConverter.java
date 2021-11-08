@@ -6,22 +6,20 @@ import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
+import org.antlr.v4.runtime.tree.ParseTreeWalker;
 
 public class Java2HtmlConverter {
 
-   private static String demoMethod = """
-         public void helloWorld() {
-            
-         }   
-         """;
-
-   public static void main(String[] args) {
-      CharStream input = CharStreams.fromString(demoMethod);
+   public String convert(final String javaMethod ) {
+      Converter converter = new Converter();
+      CharStream input = CharStreams.fromString(javaMethod);
       HelloLexer lexer = new HelloLexer(input);
       CommonTokenStream tokens = new CommonTokenStream(lexer);
       HelloParser parser = new HelloParser(tokens);
       ParseTree pt = parser.method();
-      System.out.println(pt.toStringTree(parser));
+      ParseTreeWalker walker = new ParseTreeWalker();
+      walker.walk(converter,pt);
+      return converter.toString();
    }
 
 }
