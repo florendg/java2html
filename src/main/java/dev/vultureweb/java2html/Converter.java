@@ -9,9 +9,51 @@ public class Converter extends HelloBaseListener {
    private final StringBuilder builder = new StringBuilder();
 
    @Override
+   public void enterClassifier(HelloParser.ClassifierContext ctx) {
+      builder.append("<span class=\"classifier\">");
+   }
+
+   @Override
+   public void exitClassifier(HelloParser.ClassifierContext ctx) {
+      builder.append("</span>\n");
+   }
+
+   @Override
+   public void enterReturnType(HelloParser.ReturnTypeContext ctx) {
+      builder.append("<span class=\"return-type\">");
+   }
+
+   @Override
+   public void exitReturnType(HelloParser.ReturnTypeContext ctx) {
+      builder.append("</span>\n");
+   }
+
+   @Override
+   public void enterMethodName(HelloParser.MethodNameContext ctx) {
+      builder.append("<span class=\"method-name\">");
+   }
+
+   @Override
+   public void exitMethodName(HelloParser.MethodNameContext ctx) {
+      builder.append("</span>\n");
+   }
+
+   @Override
+   public void enterArg(HelloParser.ArgContext ctx) {
+      builder.append("<div class=\"argument\">\n");
+   }
+
+   @Override
+   public void exitArg(HelloParser.ArgContext ctx) {
+      builder.append("</div>\n");
+   }
+
+   @Override
    public void enterMethod(HelloParser.MethodContext ctx) {
       builder.append("<pre>\n");
    }
+
+
 
    @Override
    public void exitMethod(HelloParser.MethodContext ctx) {

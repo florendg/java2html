@@ -15,8 +15,13 @@ class Java2HtmlConverterTest {
             """;
       var expected = """
             <pre>
-            publicvoidhelloWorld(<span class="type">String</span>
-            name){System.out.println(<span class="string-literal">"HelloWorld"</span>
+            <span class="classifier">public</span>
+            <span class="return-type">void</span>
+            <span class="method-name">helloWorld</span>
+            (<div class="argument">
+            <span class="type">String</span>
+            name</div>
+            ){System.out.println(<span class="string-literal">"HelloWorld"</span>
             );}
             </pre>
             """;
