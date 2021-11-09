@@ -23,10 +23,13 @@ returnDeclaration : 'return' expr ';'
 expr : stringLiteral
      | ;
 
-stringLiteral : '"' ID '"' ;
+stringLiteral : QUOTE literal QUOTE ;
+
+literal : ID
+        | ID  literal;
 
 args : arg
-     | arg ',' arg
+     | arg ',' args
      | ;
 arg : type ID
     | stringLiteral
@@ -44,5 +47,6 @@ type : ID
 NUMBER : [0-9]+;
 METHOD_START : '{' ;
 METHOD_END : '}' ;
+QUOTE : '"' ;
 ID : [a-zA-Z]+ ;
 WS : [ \t\n\r] -> skip ;

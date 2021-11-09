@@ -19,6 +19,26 @@ public class Converter extends HelloBaseListener {
    }
 
    @Override
+   public void enterStringLiteral(HelloParser.StringLiteralContext ctx) {
+      builder.append("<span class=\"string-literal\">");
+   }
+
+   @Override
+   public void exitStringLiteral(HelloParser.StringLiteralContext ctx) {
+      builder.append("</span>\n");
+   }
+
+   @Override
+   public void enterType(HelloParser.TypeContext ctx) {
+      builder.append("<span class=\"type\">");
+   }
+
+   @Override
+   public void exitType(HelloParser.TypeContext ctx) {
+      builder.append("</span>\n");
+   }
+
+   @Override
    public void visitTerminal(TerminalNode node) {
       builder.append(node.toString());
    }

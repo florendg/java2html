@@ -15,7 +15,9 @@ class Java2HtmlConverterTest {
             """;
       var expected = """
             <pre>
-            publicvoidhelloWorld(Stringname){System.out.println("Hello");}
+            publicvoidhelloWorld(<span class="type">String</span>
+            name){System.out.println(<span class="string-literal">"HelloWorld"</span>
+            );}
             </pre>
             """;
       var result = new Java2HtmlConverter().convert(helloWorld);
